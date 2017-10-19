@@ -1,6 +1,7 @@
 # WAD
 
-Travelator App
-- displays articles with best destinations for each year
-- using different APIs such as Skyline, Foursquare, Booking.. finds flights and hotels
-- using Google maps API searches for destinations according to the user's settings ( sea, mountain, city breaks, exotic, ..)
+The ShapeShifters Gym
+- Postgres database 
+- Java + spring boot backend
+- HTML + CSS + JS + Bootstrap front end
+- A site with about us description, data about instructors and classes, contact form that sends an email to myself and Add Appointment to a class functionality
