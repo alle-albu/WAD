@@ -4,7 +4,7 @@ package pojos;
 import com.google.gson.JsonObject;
 
 
-public class Instructor  {
+public class MyInstructor  {
 
 	private int id;	
 

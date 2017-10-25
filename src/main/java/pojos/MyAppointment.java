@@ -3,7 +3,7 @@ package pojos;
 
 import com.google.gson.JsonObject;
 
-public class Appointment {
+public class MyAppointment {
 
 	private int id;	
 

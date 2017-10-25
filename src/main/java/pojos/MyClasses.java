@@ -5,7 +5,7 @@ import java.sql.Time;
 import com.google.gson.JsonObject;
 
 
-public class Myclass {
+public class MyClasses {
 	private int id;	
 
 	private String className;	
