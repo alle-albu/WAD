@@ -62,6 +62,23 @@ public class WebController {
 		return appsArray.toString();
 	}
 	
+	@RequestMapping(value="/myclasses/{day}", method=RequestMethod.GET)
+	String getMyclassesByDay(@PathVariable("day") String day) {
+		JsonArray arr = new JsonArray();
+
+        for (Myclass c : myclassesRepository.findAll()) {
+        	 System.out.println(c.getDay()+"  "+day+"  "+c.getDay().compareToIgnoreCase(day.toString()));
+            if (c.getDay().toString().compareToIgnoreCase(day.toString())>40) {
+                arr.add(c.toJsonObject());
+            }
+        }
+        if (arr.size() > 0) {
+            return arr.toString();
+        } else {
+            throw new NotFoundException();
+        }
+	}
+	
 	@RequestMapping(value = "/add/instructor", method = RequestMethod.POST)
 	void addInstructor(@RequestBody MyInstructor instructor) {
 		System.out.println(instructor.toJsonObject().toString());
