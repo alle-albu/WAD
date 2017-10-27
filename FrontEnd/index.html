@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+Access-Control-Allow-Origin: http://localhost:8081/appointments
+  <title>my Gym</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/classes', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,val){
+		$("#here").append('<li class="list-group-item">'+val.day+'	'+val.className+'	'+val.instructorId);
+		$("#here").append('</li>');
+		});
+        }
+    });
+});
+</script>
+<script>
+var ins=[];
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/instructors', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,val){
+		ins[val.id]=val.firstName;
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/monday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereMon").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereMon").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/tuesday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereTue").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereTue").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/wednesday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereWed").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereWed").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/thursday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereThu").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereThu").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/friday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereFri").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereFri").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/saturday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereSat").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereSat").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+</script>
+<script>
+function myFct(){
+var fn=$("#firstname")[0].value;
+console.log(fn);
+var ln=$("#lastname")[0].value;
+console.log(ln);
+var ci=$("#classMon")[0].value;
+console.log(ci);
+var first=ci.lastIndexOf("[");
+var last=ci.lastIndexOf("]");
+var id=ci.substring(first+1,last);
+console.log(id);
+var formData = "{ "+"\"firstName\""+": \""+fn+"\", \"lastName\""+": \""+ln+"\", \"classId\""+": \""+id+"\" }";
+console.log(formData);
+
+$.ajax({
+  type: "POST",
+  url: "http://localhost:8081/add/appointment",
+  data: formData,
+  success: function(){console.log("EYYY");},
+  dataType: "json",
+  contentType : "application/json"
+});
+}
+  
+</script>
+
+  <style>
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 70px;
+  text-align: right;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+  body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #6f6772;
+  }
+  h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .container {
+      padding: 50px 50px;
+  }
+  .person {
+      border: 10px solid transparent;
+      margin-bottom: 25px;
+      width: 80%;
+      height: 80%;
+      opacity: 0.7;
+  }
+  .person:hover {
+      border-color: #f1f1f1;
+  }
+  .carousel-inner img {
+      -webkit-filter: grayscale(90%);
+      filter: grayscale(90%); /* make all photos black and white */ 
+      width: 100%; 
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  .bg-1 {
+      background: #6f6772;
+      color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {align:center;}
+  
+  .vid { display: flex; align-items: center; justify-content: center; background: #111; }
+
+  .list-group-item:first-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #565151;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+  .modal-header, h4, .close {
+      background-color: #333;
+      color: #fff !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-header, .modal-body {
+      padding: 10px 10px;
+  }
+  .nav-tabs li a {
+      color: #eeeaef;
+  }
+  #googleMap {
+      width: 100%;
+      height: 500px;
+
+  }  
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #6f6772 ;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #565151 !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  footer {
+      background-color: #6f6772;
+      color: #f5f5f5;
+      padding: 32px;
+  }
+  footer a {
+      color: #f5f5f5;
+  }
+  footer a:hover {
+      color: #777;
+      text-decoration: none;
+  }  
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+  a:link, a:hover, a:active {color: inherit; text-decoration: none;}
+  </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="C:\Users\i342899\Desktop\Stuff\project\icon.png" alt="Logo" style="width:60px;height:50px;">
+      <a class="navbar-brand" href="#myPage">The SHAPE SHIFTERS</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#myPage">HOME</a></li>
+        <li><a href="#about">ABOUT US</a></li>
+        <li><a href="#classes">CLASSES</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="http://www.telegraph.co.uk/content/dam/luxury/2017/03/21/Gym_2_trans_NvBQzQNjv4BqgsaO8O78rhmZrDxTlQBjdGcv5yZLmao6LolmWYJrXns.jpg?imwidth=1400" alt="Gym1" width="1200" height="700">     
+      </div>
+
+      <div class="item">
+        <img src="https://ichef.bbci.co.uk/news/660/cpsprodpb/16285/production/_91175709_gettyimages-585549648-1.jpg" alt="Gym3" width="1200" height="700">     
+      </div>
+    
+      <div class="item">
+        <img src="https://greatist.com/sites/default/files/styles/article_main/public/studio_gym2.jpg?itok=VR3vFgfk" alt="Gym2" width="1200" height="700">
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Container (The About Us Section) -->
+<div id="about" class="container text-center">
+  <!--<h3>ABOUT US</h3>-->
+  <h3>THE SHAPESHIFTING GYM</h3>
+  <p>We want to make health and fitness available to everyone, whatever your lifestyle. That's why we've created a gym at a great price that's always open. We're making sure the fitness equipment is world class, while saving on fussy extras.
+
+So what's the catch? There isn't one. We're not charging for any frills: you can expect nice, clean changing rooms- just no sauna or free towel. And our hi-tech entry system lets you get in at any time you like, even during the hours without a staff member around.<br>
+At The ShapeShifters, you'll find top-quality equipment from MATRIX, apart from a wide diversity of instructed classes. We've included the most popular equipment within cardio, strength and functional. And topped that up with some of our personal favorites - so you get a great full-body workout</p>
+
+ <br>
+<h3>MEET OUT TRAINERS</h3>
+  <div class="row">
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Ancuta</strong></p><br>
+      <a href="#demo" data-toggle="collapse">
+        <img src="https://mindbodygreen-res.cloudinary.com/images/c_fill,g_auto,w_370,h_262/q_80,fl_lossy,f_auto/crp/woman-brunette-strong-dumbbells-850x400/4-lies-fitness-instructors-tell.jpg" class="img-circle person" alt="Ancuta" width="255" height="255">
+      </a>
+      <div id="demo" class="collapse">
+        <p>Personal trainer and author</p>
+        <p>I love yoga and it's inpact on our everyday life</p>
+        <p>Member since 2010</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Tabita</strong></p><br>
+      <a href="#demo2" data-toggle="collapse">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWqEYJxtzw93q68zYB3oz-sqAAs_7yMeM202syaRkQM1d-KeVyNQ" class="img-circle person" alt="Tabita" width="255" height="255">
+      </a>
+      <div id="demo2" class="collapse">
+        <p>Personal trainer and professional athlete</p>
+        <p>Running for long times got me into intense workouts like HIIT</p>
+        <p>Member since 2013</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <p class="text-center"><strong>Flavia</strong></p><br>
+      <a href="#demo3" data-toggle="collapse">
+        <img src="https://www.wellandgood.com/wp-content/uploads/2016/09/Olivia-Amato-2.jpg" class="img-circle person" alt="Flavia" width="255" height="255">
+      </a>
+      <div id="demo3" class="collapse">
+        <p>Personal trainer and dancer</p>
+        <p>I love expressing myself through dancing, you should definitely come check out my Zumba Class</p>
+        <p>Member since 2015</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Container (Classes/ Appointment Section) -->
+<div id="classes" class="bg-1">
+  <div class="container-fluid">
+	  <div class="row">
+	        <div class="col-sm-2">
+	            <p>hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hellohello hello hello hello</p>
+	        </div>
+	  <div class="col-sm-8">
+    <!--<h3 class="text-center">CLASSES</h3>-->
+    <h4 class="text-center">CLASSES</h4>
+
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a data-toggle="tab" href="#zumba">Zumba</a></li>
+    <li><a data-toggle="tab" href="#kangoo">Kangoo</a></li>
+    <li><a data-toggle="tab" href="#trx">TRX</a></li>
+<li><a data-toggle="tab" href="#pilates">Pilates</a></li>
+<li><a data-toggle="tab" href="#cycling">Cycling</a></li>
+<li><a data-toggle="tab" href="#fitpump">Fit Pump</a></li>
+<li><a data-toggle="tab" href="#yoga">Yoga</a></li>
+<li><a data-toggle="tab" href="#sculpting">Sculpting</a></li>
+<li><a data-toggle="tab" href="#boxing">Boxing</a></li>
+<li><a data-toggle="tab" href="#kickboxing">Kickboxing</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="zumba" class="tab-pane fade in active text-center">
+      <a href="#videoZ" data-toggle="collapse" class="bg-1 text-center"><h3>Zumba</h3></a>
+      <p>Zumba was born in Colombia in the 1990s, quite by accident. A fitness instructor forgot to bring his usual workout music to class, so he grabbed some Latin albums from his car, ditched the constraints of a traditional workout and danced just like he would at a club. His class followed along, sweating to the salsa and rumba beats, and loving it.
+Since then, Zumba has pitched itself as more of a party than a workout. Indeed, some research suggests it may be the very best workout for people who hate to exercise.
+</p><p>
+A Zumba class is like any other instructor-led workout, but with simple dance moves heavy on the hips and step counts. Those moves add up to a decent sweat, says John Porcari, a professor of exercise and sport science at the University of Wisconsin, La Crosse. He and his colleagues analyzed a group of women who were Zumba regulars and found that a 40-minute class burns about 370 calories, a little more than nine calories per minute. That’s roughly the same amount you’d work off if you ran at a slow-ish pace or biked at 15 miles per hour for the same amount of time.
+</p>
+      <p>"It was the vibe of the class, the permanent joy and happiness that was filling the room, the sense of empowerment that I never felt before."</p>
+<br>
+    <div class="container-fluid vid col-md-12" >
+        <div id="videoZ" class="collapse full-width-div">
+        <iframe width="620" height="335" 
+        src="https://www.youtube.com/embed/rPtPPMB8OI0"
+        frameborder="0" allowfullscreen>
+        </iframe>
+        </div>
+    </div>
+    </div>
+    
+    <div id="kangoo" class="tab-pane fade text-center">
+      <a href="#videoK" data-toggle="collapse" class="bg-1 text-center"><h3>Kangoo</h3></a>
+      <p>Jogging and running has always been considered the "gold standard" of aerobics, anyone wanting to lose weight at an acceptable rate has considered taking up jogging/running just to see quick results. But as many of us have experienced there are many traumas associated with running, trauma to structures of the feet, dropped arch, shin splints, sprains, knee and hip injuries, as well as chronic disc and degenerative spinal conditions.
+</p><p>
+But now thanks to Denis Naville the inventor of Kangoo Jumps we have a FUN way to get healthy, challenge the heart, save our joints and lose weight.  
+Kangoo Jumps provides you all the benefits of rebounding.  Rebounding is an exercise that reduces your body fat;  firms your arms, legs, thighs, abdomen, and hips;  increases your agility; strengthens your muscles and provides an aerobic effect for your heart.
+</p><p>
+Kangoo Jumps are the world's lowest impact shoes available. They protect (and actually reinforce!) your ankles, shins, knees, hips, lower back and spine. Kangoo Jumps, has a patented Impact Protection System, reducing the impact to your feet, ankles, knees, and lower back by up to 80%.   Kangoo Jump Boots improves balance, agility, and coordination and can be used indoors or outdoors.</p>
+    
+    <br><div class="container-fluid vid col-md-12" >
+        <div id="videoK" class="collapse full-width-div">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/iyxkG8KNA6o" frameborder="0" allowfullscreen>
+        </iframe>
+        </div>
+    </div>
+    
+    </div>
+    <div id="trx" class="tab-pane fade text-center">
+      <a href="#videoT" data-toggle="collapse" class="bg-1 text-center"><h3>TRX</h3></a>
+      <p>TRX Suspension Training</p><p>
+Suspension Training develops your strength by utilizing functional movements and dynamic positions that are performed not only when lying on your back on the ground, which is typical for traditional abs exercises.
+
+Besides that, the TRX system offers a whole range of movements focusing on abs solely.
+Body workout is not complete without exercises challenging your back, shoulders, chest, hips and legs. That is why we say that TRX Suspension Trainer delivers a total-body workout.</p>
+<p>Suspension training allows you to adjust your body in countless angles to complete every exercise possible. TRX gives you an opportunity to design exercises that challenge the entire body in every plane of motion.
+Doing sports and everyday exercises require our bodies to move in various planes. Suspension training enables you to do multi-planar exercises, just the way we do in every movement we produce. It does not require that you sit down and do an exercise focused on one isolated muscle in a single plane.</p>
+   
+   <br><div class="container-fluid vid col-md-12" >
+        <div id="videoT" class="collapse full-width-div">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/wrAYPNSOlsU" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+   
+    </div>
+    <div id="pilates" class="tab-pane fade text-center">
+        <a href="#videoP" data-toggle="collapse" class="bg-1 text-center"><h3>Pilates</h3></a>
+        <p>Pilates is a series of about 500 exercises inspired by calisthenics, yoga and ballet. Pilates lengthens and stretches all the major muscle groups in the body in a balanced fashion. It improves flexibility, strength, balance and body awareness.
+</p><p>In the 1920s, physical trainer Joseph Pilates introduced Pilates into America as a way to help injured athletes and dancers safely return to exercise and maintain their fitness. Since then, Pilates has been adapted to suit people in the general community.
+
+Pilates can be an aerobic and non-aerobic form of exercise. It requires concentration and focus, because you move your body through precise ranges of motion. Pilates lengthens and stretches all the major muscle groups in your body in a balanced fashion. It requires concentration in finding a centre point to control your body through movement. Each exercise has a prescribed placement, rhythm and breathing pattern.
+</p><p>
+In Pilates, your muscles are never worked to exhaustion, so there is no sweating or straining, just intense concentration. The workout consists of a variety of exercise sequences that are performed in low repetitions, usually five to ten times, over a session of 45 to 90 minutes. Mat work and specialised equipment for resistance are used.
+
+The Pilates method is taught to suit each person and exercises are regularly re-evaluated to ensure they are appropriate for that person. Due to the individual attention, this method can suit everybody from elite athletes to people with limited mobility, pregnant women and people with low fitness levels.
+</p><p>Pilates caters for everyone, from beginner to advanced. You can perform exercises using your own body weight, or with the help of various pieces of equipment.
+
+A typical Pilates workout includes a number of exercises and stretches. Each exercise is performed with attention to proper breathing techniques and abdominal muscle control. To gain the maximum benefit, you should do Pilates at least two or three times per week. You may notice postural improvements after 10 to 20 sessions.</p>
+       
+       <br><div class="container-fluid vid col-md-12" >
+        <div id="videoP" class="collapse full-width-div">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/4thujUsx9pI" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+       
+        </div>
+    <div id="cycling" class="tab-pane fade text-center">
+        <a href="#videoC" data-toggle="collapse" class="bg-1 text-center"><h3>Cycling</h3></a>
+        <p>To be fit and healthy you need to be physically active. Regular physical activity can help protect you from serious diseases such as obesity, heart disease, cancer, mental illness, diabetes and arthritis. Riding your bicycle regularly is one of the best ways to reduce your risk of health problems associated with a sedentary lifestyle.
+</p><p>
+Cycling is a healthy, low-impact exercise that can be enjoyed by people of all ages, from young children to older adults. It is also fun, cheap and good for the environment.
+
+Riding to work or the shops is one of the most time-efficient ways to combine regular exercise with your everyday routine. An estimated one billion people ride bicycles every day – for transport, recreation and sport..</p>
+ <p>It only takes two to four hours a week to achieve a general improvement to your health. Cycling is a good way to control or reduce weight, as it raises your metabolic rate, builds muscle and burns body fat. If you’re trying to lose weight, cycling must be combined with a healthy eating plan. Cycling is a comfortable form of exercise and you can change the time and intensity – it can be built up slowly and varied to suit you.
+ </p>
+ 
+ <br><div class="container-fluid vid col-md-12" >
+        <div id="videoC" class="collapse full-width-div">
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/4Hl1WAGKjMc" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+ 
+        </div>
+    <div id="fitpump" class="tab-pane fade text-center">
+        <a href="#videoF" data-toggle="collapse" class="bg-1 text-center"><h3>Fit Pump</h3></a>
+        <p>With professional instructors and a whole class around you, along with motivational music to work to, BodyPump ensures you not only enjoy your workout but also give it everything you’ve got!
+
+Your body will tone up as you gain muscle and as the fat drops off you will notice improved shape and definition around your body.</p>
+<p>With classes lasting 45 to 60 minutes there is ample time to burn serious calories. And we all know, more calories burned than taken in will result in weight loss. During a 60 minute session the calories burned by body pump exercises can be around 600, depending on the intensity of the class.</p>
+<p>You will perform a 45-60 minute long workout with a class of people whilst timing repetitions to music mix tapes. Your BodyPump instructor will take you through a warm up with light weights initially to get you ready for the intense workout.
+
+You then complete an intense muscle and cardio workout using a barbell. Each of the major muscle groups are worked in turn including chest, back, shoulders and abdominals. This ensures maximum calorie burn and toning as it hits every area of your body.
+
+The tempo of the music finally slows down as you perform a cool down and complete stretches to reduce muscle soreness and risk of injury.</p>
+        
+        <br><div class="container-fluid vid col-md-12" >
+        <div id="videoF" class="collapse full-width-div">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rMwaMyMOa20" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+        
+        </div>
+    <div id="yoga" class="tab-pane fade text-center">
+        <a href="#videoY" data-toggle="collapse" class="bg-1 text-center"><h3>Yoga</h3></a>
+        <p>Yoga is an ancient Indian philosophy that dates back thousands of years. It was designed as a path to spiritual enlightenment, but in modern times, the physical aspects of Hatha yoga have found huge popularity as a gentle form of exercise and stress management. There are many different varieties of yoga, but each one essentially relies on structured poses (asanas) practiced with breath awareness.
+</p><p>
+Researchers have discovered that the regular practice of yoga may produce many health benefits, including increased fitness and normalisation of blood pressure. Yoga is a renowned antidote to stress. Over time, yoga practitioners report lower levels of stress, and increased feelings of happiness and wellbeing. This is because concentrating on the postures and the breath acts as a form of meditation. 
+
+The classical techniques of yoga date back more than 5,000 years. The practice of yoga encourages effort, intelligence, accuracy, thoroughness, commitment and dedication. The word yoga means ‘to join or yoke together’. It brings your body and mind together, and is built on three main elements – exercise, breathing and meditation.
+</p><p>
+The exercises of yoga are designed to put pressure on the glandular systems of your body, increasing your body’s efficiency and total health. Breathing techniques increase breath control to improve the health and function of body and mind.
+
+The two systems of exercise and breathing prepare the body and mind for meditation, with an approach to a quiet mind that allows silence and healing from everyday stress. When practiced regularly, yoga can become a powerful and sophisticated discipline for achieving physical, mental and emotional wellbeing.</p>
+<p>Each yoga posture, or asana, is held for a period of time and linked with breathing. Generally, a yoga session begins with gentle asanas and works up to more vigorous or challenging postures. A full yoga session should exercise every part of your body and should include pranayama (breath control practices), relaxation and meditation.
+</p>
+
+<br><div class="container-fluid vid col-md-12" >
+        <div id="videoY" class="collapse full-width-div">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/C-Q7GeQG6iE" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+        </div>
+    <div id="sculpting" class="tab-pane fade text-center">
+        <a href="#videoS" data-toggle="collapse" class="bg-1 text-center"><h3>Sculpting</h3></a>
+        <p>Body sculpting, also called weight training, resistance training or strength training, is a form of exercise which uses external weight or resistance or your own body weight to stress the muscles. The end result is newly toned or sculpted muscles. Body sculpting can help you get in shape, tone the body and lose weight. The basics of body sculpting are simple, even for beginners and it doesn’t require a lot of equipment. Doing a body sculpting routine can yield many benefits for men and women--an increase in lean muscle mass, increased strength and stronger bones and joints. Increased muscle mass increases metabolism, resulting in more calories burned in everything you do.</p>
+        <p> Sculpting classes use weight weigh bars, exercise bands or dumbbells, or a combination of these weights. You perform traditional weight-training moves in a class setting, but the weight-training exercises are easy to learn and put little impact on the joints, unlike high-impact cardio workouts.
+        Exercises like the overhead press, dumbbell row, lunges and squats are the fundamental building blocks of the body-sculpting programme and are important in increasing bone density. Upper body strength training will improve bone density in the wrists, and lower body exercises such as squats and lunges will help load the femur bones in the legs.</p>
+        <p>Any fitness level can do the core-conditioning exercises. It helps you to lose weight, become firm and toned.
+Moreover if you are a first-timer, he said you should be prepared to experience muscle soreness for two days after your exercise workout class, but remember it is also helping to burn fat.
+If you want to focus on a particular part of your body, always remember body sculpting is the way to go. Just know that you'll be strengthening (toning) these body parts and melting fat off them.</p>
+       
+       <br><div class="container-fluid vid col-md-12" >
+        <div id="videoS" class="collapse full-width-div">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_Zem0_qsDg0" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+       
+        </div>
+    <div id="boxing" class="tab-pane fade text-center">
+        <h3>Boxing</h3>
+        <p>Boxing for fitness is so popular because it provides the best workout and challenges you both mentally and physically. Boxing not only helps to strengthen and tone your muscles, but it's also a great stress release. Best of all, being high intensity in nature, it burns tons of calories and can be your best friend in weight loss.</p>
+        <p>Boxing can easily burn as much as 500 calories per session. Boxing however, has an additional benefit thanks to the fact that it is high intensity training. You see, when performing high intensity training, you not only burn heaps of calories during the session, but for hours after the training session has ended. Typical cardio activities do not have this post training calorie burning effect. Hence, boxing is your best friend when it comes to losing weight.</p>
+        <p>A typical boxer's physique is toned and defined without a lot of bulk and that's why it's perfect if you really want to tone up. This is because punching is a fast repetitive action that produces toned taut muscles, in contrast to the slow, controlled, very heavy movements involved in body-building or weight lifting that produce size or bulk.</p>
+        <p>Boxing is a full body movement so when you throw punches a huge number of your body’s muscles are contracting at the same time. This makes your heart and lungs work overtime to pump blood containing oxygen all around your body.
+Boxing will test your cardiovascular system to the max, forcing your body to adapt by making your heart and lungs better at delivering oxygen. This means that you can train at a higher intensity, giving an even greater fat burning effect.</p>
+<p> Boxing requires your muscles to contract repeatedly causing the muscles involved to fatigue. With training, your muscles can keep contracting for longer durations without getting tired, allowing you to train harder for longer and ultimately burn more calories.</p>
+<p>Boxing is the ultimate full body workout. Correctly thrown punches use your legs, hips, glutes, core, obliques, back, shoulders, chest and arms. Punching against resistance causes all of these muscles to contract with more force and speed, developing further your strength and power.</p>
+<p>Sure, boxing is a fantastic physical activity that can help you get in shape, but it has psychological benefits too. Hitting stuff can make you feel really good! Take out the stresses of your normal life in a safe, controlled environment. It will leave you calm and relaxed and ready to tackle whatever curveball life throws at you next!</p>
+        </div>
+    <div id="kickboxing" class="tab-pane fade text-center">
+        <h3>Kickboxing</h3>
+        <p>If you're stuck in a workout rut or looking for a motivating fitness routine, you might consider adding a high-energy kickboxing workout to the schedule. Kickboxing workouts combine martial arts techniques with heart-pumping cardio, which means you can get a total body workout and whip yourself into shape in no time.
+Whether you're a fitness newbie or long-time gym aficionado, undertaking a kickboxing workout at least once per week can help you feel re-energized and out of a rut.</p>
+<p>You can kick and punch your way to a stress-free zone within minutes of your high-energy kickboxing routine. The movements in kickboxing challenge several core muscle groups and will give you a total body workout, fast.</p>
+<p>If you're suffering from posture problems and have poor coordination, you can strengthen your 'core' and improve your reflexes and coordination skills. The speedy punches and kicks in the kickboxing routine will give you a chance to focus your energy to execute each movement successfully.</p>
+<p> If you've been pounding on the treadmill for several weeks and need a break from your usual cardio routine, kickboxing is the perfect cross-training workout. You can add some weights by wearing wrist weights or ankle weights, or just putting on a pair of lightweight boxing gloves for extra resistance. Just one or two routines a week can help you break out of a fitness rut, fast. Kickboxing can burn over 800 calories per hour, and you'll be toning up your entire body as you rev up your metabolism. It's a high-power cardio routine that's great for weight loss and getting you in shape, fast.</p>
+<p> If you're hunched over a computer all day, kickboxing workouts will challenge many muscle groups that don't get enough attention throughout the day, and you'll start to build up your core. Core muscles in around your abdominal wall are targeted with kickboxing routines because you need to use your waist and abs for balance, and to execute each carefully coordinated move.</p>
+        </div>
+    </div>
+
+<div id="dp">
+</div>
+
+<!--
+    
+<ul class="list-group" id="here">
+</ul>-->
+<br><br>
+<h4 class="text-center">MAKE AN APPOINTMENT</h4>
+    
+      <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Monday</strong></p>
+          <p id="hereMon"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Tuesday</strong></p>
+          <p id="hereTue"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Wednesday</strong></p>
+          <p id="hereWed"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+	<div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Thursday</strong></p>
+          <p id="hereThu"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+	<div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Friday</strong></p>
+          <p id="hereFri"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+	<div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Saturday</strong></p>
+          <p id="hereSat"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4><span class="glyphicon glyphicon-leaf"></span> New Appointment</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" id="myForm">
+            <div class="form-group">
+              <label for="firstName"><span class="glyphicon glyphicon-sunglasses"></span>  First name</label>
+              <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+              <label for="lastName"><span class="glyphicon glyphicon-user"></span>  Last name</label>
+              <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
+            </div>
+	    <div class="form-group" id="mon" ><label for="classMon"><span class="glyphicon glyphicon-hand-right"></span>  Class</label><select class="form-control" id="classMon"></select></div>
+
+        <div class="modal-footer">
+	<button type="submit" onclick="myFct()" class="btn btn-success btn-default pull-left" data-dismiss="modal">Confirm 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+
+          <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+	</div>
+	</form>
+        
+	</div>  
+    </div>
+  </div>
+</div>
+
+		<div class="col-sm-2">
+            <p>hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hellohello hello hello hello</p>
+        </div> 
+</div>
+</div>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container text-center">
+  <h3 class="text-center">Contact</h3>
+  <p class="text-center"><em>Come and train with us!</em></p>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p><span class="glyphicon glyphicon-map-marker"></span>Timisoara, RO</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 123123123</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+    </div>
+<form action="mailto:elaalbu@yahoo.com" method="post" enctype="text/plain">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      <br>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <button class="btn pull-right" type="submit">Send</button>
+        </div>
+      </div>
+</form>
+    </div>
+  </div>
+  <br>
+  
+</div>
+
+<!-- Add Google Maps -->
+<div id="googleMap"></div>
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(45.759780, 21.230020);
+var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7gsM04XS_AJaWD6OaWoA_I3HVON4Pl-A&callback=myMap"></script>
+
+<!-- Footer -->
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+<a href="https://twitter.com/?lang=en" class="fa fa-twitter"></a>
+<a href="https://www.google.ro/" class="fa fa-google"></a>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})
+</script>
+
+</body>
+</html>
