@@ -13,6 +13,184 @@ Access-Control-Allow-Origin: http://localhost:8081/appointments
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <script>
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/classes', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,val){
+		$("#here").append('<li class="list-group-item">'+val.day+'	'+val.className+'	'+val.instructorId);
+		$("#here").append('</li>');
+		});
+        }
+    });
+});
+</script>
+<script>
+var ins=[];
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/instructors', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,val){
+		ins[val.id]=val.firstName;
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/monday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereMon").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereMon").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/tuesday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereTue").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereTue").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/wednesday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereWed").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereWed").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/thursday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereThu").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereThu").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/friday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereFri").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereFri").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://10.27.82.192:8081/myclasses/saturday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereSat").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereSat").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+</script>
+<script>
+function myFct(){
+var fn=$("#firstname")[0].value;
+console.log(fn);
+var ln=$("#lastname")[0].value;
+console.log(ln);
+var ci=$("#classMon")[0].value;
+console.log(ci);
+var first=ci.lastIndexOf("[");
+var last=ci.lastIndexOf("]");
+var id=ci.substring(first+1,last);
+console.log(id);
+var formData = "{ "+"\"firstName\""+": \""+fn+"\", \"lastName\""+": \""+ln+"\", \"classId\""+": \""+id+"\" }";
+console.log(formData);
+
+$.ajax({
+  type: "POST",
+  url: "http://localhost:8081/add/appointment",
+  data: formData,
+  success: function(){console.log("EYYY");},
+  dataType: "json",
+  contentType : "application/json"
+});
+}
+  
+</script>
 
   <style>
 .fa {
@@ -298,6 +476,87 @@ At The ShapeShifters, you'll find top-quality equipment from MATRIX, apart from 
 <br><br>
 <h3 class="text-center">MAKE AN APPOINTMENT</h3>
     
+      <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Monday</strong></p>
+          <p id="hereMon"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Tuesday</strong></p>
+          <p id="hereTue"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Wednesday</strong></p>
+          <p id="hereWed"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+	<div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Thursday</strong></p>
+          <p id="hereThu"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+	<div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Friday</strong></p>
+          <p id="hereFri"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+	<div class="col-sm-4">
+        <div class="thumbnail">
+          <p><strong>Saturday</strong></p>
+          <p id="hereSat"></p>
+          <button class="btn" data-toggle="modal" data-target="#myModal" >Make Appointment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4><span class="glyphicon glyphicon-leaf"></span> New Appointment</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" id="myForm">
+            <div class="form-group">
+              <label for="firstName"><span class="glyphicon glyphicon-sunglasses"></span>  First name</label>
+              <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+            </div>
+            <div class="form-group">
+              <label for="lastName"><span class="glyphicon glyphicon-user"></span>  Last name</label>
+              <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
+            </div>
+	    <div class="form-group" id="mon" ><label for="classMon"><span class="glyphicon glyphicon-hand-right"></span>  Class</label><select class="form-control" id="classMon"></select></div>
+
+        <div class="modal-footer">
+	<button type="submit" onclick="myFct()" class="btn btn-success btn-default pull-left" data-dismiss="modal">Confirm 
+                <span class="glyphicon glyphicon-ok"></span>
+              </button>
+
+          <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+          </button>
+	</div>
+	</form>
+        
+	</div>  
+    </div>
   </div>
 </div>
 
