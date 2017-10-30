@@ -14,25 +14,7 @@ Access-Control-Allow-Origin: http://localhost:8081/appointments
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
-  <script>
 
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/classes', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,val){
-		$("#here").append('<li class="list-group-item">'+val.day+'	'+val.className+'	'+val.instructorId);
-		$("#here").append('</li>');
-		});
-        }
-    });
-});
-</script>
 <script>
 var ins=[];
 $(document).ready(function () {
@@ -54,16 +36,16 @@ $(document).ready(function () {
 $(document).ready(function () {
     $.ajax({ 
         type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/monday', 
+        url: 'http://localhost:8081/myclasses/monday', 
         data: { get_param: 'value' }, 
        // dataType: 'json',
         success: function (data) { 
 		if(typeof data != "string") data=JSON.stringify(data);
             	var names = $.parseJSON(data);
 		$(names).each(function(i,value){
-		$("#hereMon").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereMon").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
 		$("#hereMon").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
 		$("#classMon").append('</option>');
 		});
         }
@@ -80,9 +62,9 @@ $(document).ready(function () {
 		if(typeof data != "string") data=JSON.stringify(data);
             	var names = $.parseJSON(data);
 		$(names).each(function(i,value){
-		$("#hereTue").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereTue").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
 		$("#hereTue").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
 		$("#classMon").append('</option>');
 		});
         }
@@ -99,9 +81,9 @@ $(document).ready(function () {
 		if(typeof data != "string") data=JSON.stringify(data);
             	var names = $.parseJSON(data);
 		$(names).each(function(i,value){
-		$("#hereWed").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereWed").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
 		$("#hereWed").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
 		$("#classMon").append('</option>');
 		});
         }
@@ -118,9 +100,9 @@ $(document).ready(function () {
 		if(typeof data != "string") data=JSON.stringify(data);
             	var names = $.parseJSON(data);
 		$(names).each(function(i,value){
-		$("#hereThu").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereThu").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
 		$("#hereThu").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
 		$("#classMon").append('</option>');
 		});
         }
@@ -137,9 +119,9 @@ $(document).ready(function () {
 		if(typeof data != "string") data=JSON.stringify(data);
             	var names = $.parseJSON(data);
 		$(names).each(function(i,value){
-		$("#hereFri").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereFri").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
 		$("#hereFri").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
 		$("#classMon").append('</option>');
 		});
         }
@@ -156,9 +138,9 @@ $(document).ready(function () {
 		if(typeof data != "string") data=JSON.stringify(data);
             	var names = $.parseJSON(data);
 		$(names).each(function(i,value){
-		$("#hereSat").append('<li class="list-group-item">'+'[ '+value.startTime+' - '+value.endTime+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereSat").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
 		$("#hereSat").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.startTime+' - '+value.endTime+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
 		$("#classMon").append('</option>');
 		});
         }
@@ -177,6 +159,11 @@ var first=ci.lastIndexOf("[");
 var last=ci.lastIndexOf("]");
 var id=ci.substring(first+1,last);
 console.log(id);
+
+var start=ci.lastIndexOf("]. ");
+var end=ci.lastIndexOf(" by");
+var className=ci.substring(start+3,end);
+console.log(className);
 var formData = "{ "+"\"firstName\""+": \""+fn+"\", \"lastName\""+": \""+ln+"\", \"classId\""+": \""+id+"\" }";
 console.log(formData);
 
@@ -184,7 +171,8 @@ $.ajax({
   type: "POST",
   url: "http://localhost:8081/add/appointment",
   data: formData,
-  success: function(){console.log("EYYY");},
+  error: function() {alert("We look forward to seeing you at "+className+"!");},
+  success: function(){ alert("Something went wrong. Please try again!");},
   dataType: "json",
   contentType : "application/json"
 });
@@ -193,6 +181,8 @@ $.ajax({
 </script>
 
   <style>
+ 
+  
 .fa {
   padding: 20px;
   font-size: 30px;
@@ -364,6 +354,10 @@ $.ajax({
       resize: none;
   }
   a:link, a:hover, a:active {color: inherit; text-decoration: none;}
+  .transimg {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -466,7 +460,7 @@ At The ShapeShifters, you'll find top-quality equipment from MATRIX, apart from 
   <div class="container-fluid">
 	  <div class="row">
 	        <div class="col-sm-2">
-	            <p>hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hellohello hello hello hello</p>
+	            
 	        </div>
 	  <div class="col-sm-8">
     <!--<h3 class="text-center">CLASSES</h3>-->
@@ -750,7 +744,7 @@ Whether you're a fitness newbie or long-time gym aficionado, undertaking a kickb
 </div>
 
 		<div class="col-sm-2">
-            <p>hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hellohello hello hello hello</p>
+          
         </div> 
 </div>
 </div>
