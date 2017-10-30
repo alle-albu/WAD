@@ -36,7 +36,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $.ajax({ 
         type: 'GET', 
-        url: 'http://localhost:8081/myclasses/monday', 
+        url: 'http://10.27.82.192:8081/myclasses/monday', 
         data: { get_param: 'value' }, 
        // dataType: 'json',
         success: function (data) { 
@@ -169,7 +169,7 @@ console.log(formData);
 
 $.ajax({
   type: "POST",
-  url: "http://localhost:8081/add/appointment",
+  url: "http://10.27.82.192:8081/add/appointment",
   data: formData,
   error: function() {alert("We look forward to seeing you at "+className+"!");},
   success: function(){ alert("Something went wrong. Please try again!");},
