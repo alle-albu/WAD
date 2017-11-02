@@ -13,14 +13,15 @@ import com.google.gson.JsonArray;
 import dao.AppointmentsRepository;
 import dao.InstructorsRepository;
 import dao.MyclassesRepository;
-import pojos.MyAppointment;
-import pojos.MyClasses;
-import pojos.MyInstructor;
-import statuses.AlreadyExistsException;
-import statuses.NotFoundException;
+import dao.MyinstructorsRepository;
 import model.Appointment;
 import model.Instructor;
 import model.Myclass;
+import model.Myinstructor;
+import pojos.MyAppointment;
+import pojos.MyInstructor;
+import statuses.AlreadyExistsException;
+import statuses.NotFoundException;
 
 @RestController
 @CrossOrigin(maxAge = 3600)
@@ -34,6 +35,9 @@ public class WebController {
 
 	@Autowired
 	AppointmentsRepository appointmentsRepository;
+	
+	@Autowired
+	MyinstructorsRepository myinstructorsRepository;
 
 	@RequestMapping(value = "/instructors", method = RequestMethod.GET)
 	String getInstructors() {

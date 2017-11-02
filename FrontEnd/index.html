@@ -1,187 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-Access-Control-Allow-Origin: http://localhost:8081/appointments
-  <title>my Gym</title>
+  <title>ShapeShifters</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-
-<script>
-var ins=[];
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/instructors', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,val){
-		ins[val.id]=val.firstName;
-		});
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/monday', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,value){
-		$("#hereMon").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
-		$("#hereMon").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
-		$("#classMon").append('</option>');
-		});
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/tuesday', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,value){
-		$("#hereTue").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
-		$("#hereTue").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
-		$("#classMon").append('</option>');
-		});
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/wednesday', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,value){
-		$("#hereWed").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
-		$("#hereWed").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
-		$("#classMon").append('</option>');
-		});
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/thursday', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,value){
-		$("#hereThu").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
-		$("#hereThu").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
-		$("#classMon").append('</option>');
-		});
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/friday', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,value){
-		$("#hereFri").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
-		$("#hereFri").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
-		$("#classMon").append('</option>');
-		});
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({ 
-        type: 'GET', 
-        url: 'http://10.27.82.192:8081/myclasses/saturday', 
-        data: { get_param: 'value' }, 
-       // dataType: 'json',
-        success: function (data) { 
-		if(typeof data != "string") data=JSON.stringify(data);
-            	var names = $.parseJSON(data);
-		$(names).each(function(i,value){
-		$("#hereSat").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
-		$("#hereSat").append('</li>');
-		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
-		$("#classMon").append('</option>');
-		});
-        }
-    });
-});
-</script>
-<script>
-function myFct(){
-var fn=$("#firstname")[0].value;
-console.log(fn);
-var ln=$("#lastname")[0].value;
-console.log(ln);
-var ci=$("#classMon")[0].value;
-console.log(ci);
-var first=ci.lastIndexOf("[");
-var last=ci.lastIndexOf("]");
-var id=ci.substring(first+1,last);
-console.log(id);
-
-var start=ci.lastIndexOf("]. ");
-var end=ci.lastIndexOf(" by");
-var className=ci.substring(start+3,end);
-console.log(className);
-var formData = "{ "+"\"firstName\""+": \""+fn+"\", \"lastName\""+": \""+ln+"\", \"classId\""+": \""+id+"\" }";
-console.log(formData);
-
-$.ajax({
-  type: "POST",
-  url: "http://10.27.82.192:8081/add/appointment",
-  data: formData,
-  error: function() {alert("We look forward to seeing you at "+className+"!");},
-  success: function(){ alert("Something went wrong. Please try again!");},
-  dataType: "json",
-  contentType : "application/json"
-});
-}
-  
-</script>
 
   <style>
- 
   
 .fa {
   padding: 20px;
@@ -417,11 +248,12 @@ At The ShapeShifters, you'll find top-quality equipment from MATRIX, apart from 
 
  <br>
 <h3>MEET OUT TRAINERS</h3>
-  <div class="row">
+  <div id="trainershere" class="row">
+  <!-- 
     <div class="col-sm-4">
       <p class="text-center"><strong>Ancuta</strong></p><br>
       <a href="#demo" data-toggle="collapse">
-        <img src="https://mindbodygreen-res.cloudinary.com/images/c_fill,g_auto,w_370,h_262/q_80,fl_lossy,f_auto/crp/woman-brunette-strong-dumbbells-850x400/4-lies-fitness-instructors-tell.jpg" class="img-circle person" alt="Ancuta" width="255" height="255">
+        <img id="myimg" src="" class="img-circle person" alt="Ancuta" width="255" height="255">
       </a>
       <div id="demo" class="collapse">
         <p>Personal trainer and author</p>
@@ -451,6 +283,8 @@ At The ShapeShifters, you'll find top-quality equipment from MATRIX, apart from 
         <p>Member since 2015</p>
       </div>
     </div>
+    -->
+    
   </div>
 </div>
 </div>
@@ -741,7 +575,9 @@ Whether you're a fitness newbie or long-time gym aficionado, undertaking a kickb
 	</div>  
     </div>
   </div>
-</div>
+ </div>
+ 
+ 
 
 		<div class="col-sm-2">
           
@@ -837,4 +673,199 @@ $(document).ready(function(){
 </script>
 
 </body>
+
+<script>
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+'localhost'+':8081/myinstructors', 
+        crossDomain : true,
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+			for(i=0;i<value._embedded.myinstructors.length;i++)
+				{
+			//console.log(value._embedded.myinstructors);
+			$("#trainershere").append("<div class='col-sm-3'><p class='text-center' id='myname"+i+"'></p><br><a href='#demo"+i+"' data-toggle='collapse'><img id='myimg"+i+"' src='' class='img-circle person' alt='Ancuta' width='255' height='255'></a><div id='demo"+i+"' class='collapse'></div></div>");
+			$("#myname"+i).append('<strong>'+value._embedded.myinstructors[i].firstName+'</strong>');
+			$("#demo"+i).append('<p>'+value._embedded.myinstructors[i].description+'</p>');
+			document.getElementById("myimg"+i).src="data:image/png;base64,"+value._embedded.myinstructors[i].photo;
+				}
+		});
+        }
+    });
+});
+</script>
+
+<script>
+var ins=[];
+var ip="localhost";
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/instructors', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,val){
+		ins[val.id]=val.firstName;
+		//console.log(ins.toString());
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/myclasses/monday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereMon").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereMon").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/myclasses/tuesday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereTue").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereTue").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/myclasses/wednesday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereWed").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereWed").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/myclasses/thursday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereThu").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereThu").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/myclasses/friday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereFri").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereFri").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+
+$(document).ready(function () {
+    $.ajax({ 
+        type: 'GET', 
+        url: 'http://'+ip+':8081/myclasses/saturday', 
+        data: { get_param: 'value' }, 
+       // dataType: 'json',
+        success: function (data) { 
+		if(typeof data != "string") data=JSON.stringify(data);
+            	var names = $.parseJSON(data);
+		$(names).each(function(i,value){
+		$("#hereSat").append('<li class="list-group-item">'+'[ '+value.startTime.substring(0,5)+' - '+value.endTime.substring(0,5)+' ]  '+value.className+'  by  '+ins[value.instructorId]);
+		$("#hereSat").append('</li>');
+		$("#classMon").append('<option>'+'[ '+value.day+' ]  '+'['+value.id+'].   '+value.className+'  by  '+ins[value.instructorId]);
+		$("#classMon").append('</option>');
+		});
+        }
+    });
+});
+</script>
+<script>
+function myFct(){
+var fn=$("#firstname")[0].value;
+console.log(fn);
+var ln=$("#lastname")[0].value;
+console.log(ln);
+var ci=$("#classMon")[0].value;
+console.log(ci);
+var first=ci.lastIndexOf("[");
+var last=ci.lastIndexOf("]");
+var id=ci.substring(first+1,last);
+console.log(id);
+
+var start=ci.lastIndexOf("]. ");
+var end=ci.lastIndexOf(" by");
+var className=ci.substring(start+3,end);
+console.log(className);
+var formData = "{ "+"\"firstName\""+": \""+fn+"\", \"lastName\""+": \""+ln+"\", \"classId\""+": \""+id+"\" }";
+console.log(formData);
+
+$.ajax({
+  type: "POST",
+  url: "http://"+ip+":8081/add/appointment",
+  data: formData,
+  error: function() {
+	      alert("We look forward to seeing you at "+className+"!");
+	      },
+  success: function(){ alert("Something went wrong. Please try again!");},
+  dataType: "json",
+  contentType : "application/json"
+});
+}
+  
+</script>
 </html>
